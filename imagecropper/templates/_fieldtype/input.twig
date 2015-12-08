@@ -1,0 +1,29 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.elementSelect({
+        elements: elements,
+        sourceElementId: '',
+        elementType: elementType,
+        id: id,
+        name: name,
+        jsClass: 'Craft.AssetSelectInput',
+        addButtonLabel: addButtonLabel,
+        limit: limit,
+        sources: sources,
+        criteria: criteria,
+        value: value
+}) }}
+<div class="imgCropper-crops -left">
+    <div id="cropped-images" class="-top-space -bottom-space">
+        {% if croppedImages is defined and croppedImages is not empty %}
+            {% for element in croppedImages %}
+                {{ element|raw }}
+            {% endfor %}
+        {% else %}
+            <span class="-italic" id="cropped-images-empty">Select an image to generate crops</span>
+        {% endif %}
+    </div>
+    <div id="imgCropper-spinner" style="display:none" class="-top-space -bottom-space">
+        <img src="/admin/resources/images/spinner.gif">
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: "Limit"|t,
+    instructions: "Limit the number of selectable images."|t,
+    id: 'limit',
+    name: 'limit',
+    value: settings.limit,
+    size: 2,
+    errors: settings.getErrors('limit')
+}) }}
+
+{{ forms.textField({
+    label: "Selection Label"|t,
+    instructions: "Enter the text you want to appear on the image selection input."|t,
+    id: 'addButtonLabel',
+    name: 'addButtonLabel',
+    value: settings.addButtonLabel,
+    size: 25,
+    errors: settings.getErrors('addButtonLabel')
+}) }}

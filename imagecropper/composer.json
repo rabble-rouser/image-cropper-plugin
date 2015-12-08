@@ -1,0 +1,28 @@
+{
+  "name": "rabbleandrouser/imageCropper",
+  "description": "rabbleandrouser.com",
+  "version": "0.0.1",
+  "keywords": [
+    "plugins",
+    "rabble",
+    "rouser"
+  ],
+  "homepage": "http://www.rabbleandrouser.com",
+  "license": "proprietary",
+  "type": "project",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "core/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Kevin Collins",
+      "email": "kcollins@rabbleandrouser.com",
+      "role": "Software Engineer"
+    }
+  ]
+}

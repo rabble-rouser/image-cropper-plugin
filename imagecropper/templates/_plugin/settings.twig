@@ -1,0 +1,84 @@
+{% import "_includes/forms" as forms %}
+
+{% if editableSections|length %}
+    <div id="default_sections">
+
+        <h2>Asset Source</h2>
+        {% set sourceOptions = [] %}
+        {% for source in assetSources %}
+            {% set sourceOptions = sourceOptions|merge([{
+            'label': source.name,
+            'value': source.id
+            }]) %}
+        {% endfor %}
+        {% set sourceOptions = [{
+        'label': 'Select Crop Source',
+        'value': '',
+        }]|merge(sourceOptions)
+        %}
+        {{ forms.select({
+            options: sourceOptions,
+            name: 'source',
+            size: 'halfwidth',
+            value: settings.source is defined and settings.source is not empty ? settings.source : ''
+        }) }}
+
+        <h2>Display Section Settings</h2>
+        {% for handle, sectionData in editableSections %}
+            {{ forms.checkboxField({
+                first: true,
+                label: (sectionData['section'].name ~ ' Entry Types'|t),
+                name: 'displaySectionSettings[' ~ handle ~']',
+                toggle: 'section-' ~ handle,
+                checked: (settings.displaySectionSettings[handle] is defined and settings.displaySectionSettings[handle] is not empty ? true : false),
+            }) }}
+            <div id="{{ 'section-' ~ handle }}" {% if settings.displaySectionSettings[handle] is not defined or settings.displaySectionSettings[handle] is empty %} class="hidden"{% endif %}>
+                {% for entryType in sectionData['entryTypes'] %}
+                    {% set entryHandle = entryType.handle %}
+
+                    <table class="data halfwidth">
+                        <div style="text-align: left">
+                            <b>{{ entryType.name }}</b>
+                        </div>
+
+                            {{ forms.textField({
+                                label: 'Number of Crops',
+                                name: "numberOfCrops[" ~ handle ~"][" ~ entryHandle ~ "]",
+                                value: settings.numberOfCrops[handle][entryHandle] is defined ? settings.numberOfCrops[handle][entryHandle] : '',
+                                size: "halfwidth",
+                                errors: settings.getErrors('numberOfCrops')
+                            }) }}
+                        {% if settings.numberOfCrops[handle][entryHandle] is defined and settings.numberOfCrops[handle][entryHandle] is not empty and settings.numberOfCrops[handle][entryHandle] > 0 %}
+                            <thead>
+                            <th>Crop Number</th>
+                            <th>Crop Width</th>
+                            <th>Crop Height</th>
+                            </thead>
+                            {% for i in 1 .. settings.numberOfCrops[handle][entryHandle] %}
+                                <tr>
+                                    <td style="text-align: left">
+                                        {{ 'Crop ' ~ loop.index }}
+                                    </td>
+                                    <td>
+                                        {{ forms.text({
+                                            name: "width[" ~ handle ~ "][" ~ entryHandle ~"][" ~ loop.index0 ~ "]",
+                                            value: (settings.width[handle][entryHandle][loop.index0] is defined ? settings.width[handle][entryHandle][loop.index0] : ''),
+                                        }) }}
+                                    </td>
+                                    <td>
+                                        {{ forms.text({
+                                            name: "height[" ~ handle ~ "][" ~ entryHandle ~"][" ~ loop.index0 ~ "]",
+                                            value: (settings.height[handle][entryHandle][loop.index0] is defined ? settings.height[handle][entryHandle][loop.index0] : ''),
+                                        }) }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    No sections available.
+{% endif %}

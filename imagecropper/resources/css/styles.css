@@ -1,0 +1,85 @@
+.-left {
+    float: left;
+}
+
+.-top-space {
+    margin-top: 10px;
+}
+
+.-bottom-space {
+    margin-bottom: 5px;
+}
+
+.-border-bottom {
+    border-bottom: 1px dotted rgba(115, 127, 140, 0.15);
+}
+.-bold {
+    font-weight: bold;
+}
+
+.-italic {
+    font-style: italic;
+}
+
+.-pad-right {
+    padding-right: 10px;
+}
+
+.view-original-button {
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.vertial-left {
+    border-left: thick solid #ff0000;
+}
+
+.modal-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.crop-img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.image-cropper-crop-modal .crop-image {
+    position: relative;
+    height: 100%;
+}
+
+.image-cropper-crop-modal {
+    padding-bottom: 58px;
+}
+
+.image-cropper-crop-modal .spinner.big {
+    position: absolute;
+    top: 50%;
+    margin: -24px;
+}
+
+.image-cropper-crop-modal .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 59px;
+    margin: 0;
+}
+
+.image-cropper-crop-modal .footer .spinner {
+    position: absolute;
+}
+
+body.ltr .buttons.leftalign {
+    float: left;
+}
