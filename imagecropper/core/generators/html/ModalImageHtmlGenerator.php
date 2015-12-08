@@ -5,11 +5,22 @@ class ModalImageHtmlGenerator extends HtmlGenerator
 {
     private $asset;
     private $constraint;
+
+    /**
+     * ModalImageHtmlGenerator constructor.
+     * @param $asset
+     * @param int $constraint
+     */
     public function __construct($asset, $constraint = 1000)
     {
         $this->asset = $asset;
         $this->constraint = $constraint;
     }
+
+    /**
+     * Generate the html for the modal
+     * @return string
+     */
     public function generate()
     {
         // Never scale up the images, so make the scaling factor always <= 1

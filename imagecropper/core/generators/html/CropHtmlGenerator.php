@@ -6,6 +6,11 @@ use Craft\ImageCropper_ContextModel;
 class CropHtmlGenerator extends HtmlGenerator
 {
     protected $context;
+
+    /**
+     * CropHtmlGenerator constructor.
+     * @param ImageCropper_ContextModel|null $contextModel
+     */
     public function __construct(ImageCropper_ContextModel $contextModel = null)
     {
         $this->context = $contextModel;
@@ -58,6 +63,10 @@ class CropHtmlGenerator extends HtmlGenerator
         return $html;
     }
 
+    /**
+     * Mutator for $context
+     * @param $context
+     */
     public function setContext($context)
     {
         $this->context = $context;

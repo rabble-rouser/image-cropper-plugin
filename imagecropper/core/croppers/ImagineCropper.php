@@ -60,8 +60,7 @@ abstract class ImagineCropper extends Cropper
 
         $conflictResolution = AssetConflictResolution::Replace;
 
-        // ------- now that we have our crop, lets upload it --------- //
-
+        // now that we have our crop, lets upload it
         $type = $contextModel->cropSource->type;
         $nameFactory = new NameGeneratorFactory($type);
         $nameGenerator = $nameFactory->create();
@@ -133,15 +132,15 @@ abstract class ImagineCropper extends Cropper
     protected function updateAsset($asset, $image, $path)
     {
         // Update our model
-        $asset->size         = IOHelper::getFileSize($path);
-        $asset->width        = $image->getWidth();
-        $asset->height       = $image->getHeight();
+        $asset->size = IOHelper::getFileSize($path);
+        $asset->width = $image->getWidth();
+        $asset->height = $image->getHeight();
 
         // Then, make sure we update the asset info as stored in the database
         $fileRecord = AssetFileRecord::model()->findById($asset->id);
-        $fileRecord->size         = $asset->size;
-        $fileRecord->width        = $asset->width;
-        $fileRecord->height       = $asset->height;
+        $fileRecord->size = $asset->size;
+        $fileRecord->width = $asset->width;
+        $fileRecord->height = $asset->height;
         $fileRecord->dateModified = IOHelper::getLastTimeModified($path);
 
         $fileRecord->save(false);

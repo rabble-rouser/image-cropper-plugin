@@ -4,12 +4,19 @@ use Craft\ImageCropper_ContextModel;
 abstract class Base
 {
 
+    /**
+     * Base constructor.
+     * @param null $attributes
+     */
     public function __construct($attributes = null)
     {
         $this->setAttributes($attributes);
 
     }
 
+    /**
+     * @return mixed
+     */
     public function craft()
     {
         return \Craft\craft();
@@ -20,11 +27,18 @@ abstract class Base
         return get_class($this);
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     public function setAttribute($name, $value)
     {
         $this->$name = $value;
     }
 
+    /**
+     * @param null $attributes
+     */
     public function setAttributes($attributes = null)
     {
         if(isset($attributes) && is_array($attributes))
@@ -36,6 +50,10 @@ abstract class Base
         }
     }
 
+    /**
+     * @param $name
+     * @return null
+     */
     public function getAttribute($name)
     {
         if(isset($this->$name))
@@ -55,6 +73,10 @@ abstract class Base
         return get_class_vars($this->getClass());
     }
 
+    /**
+     * Set attributes from an ImageCropper_ContextModel
+     * @param ImageCropper_ContextModel $contextModel
+     */
     public function setAttributesByContext(ImageCropper_ContextModel $contextModel)
     {
         $this->setAttributes($contextModel->getAttributes());

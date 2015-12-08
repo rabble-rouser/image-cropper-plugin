@@ -8,6 +8,11 @@ class DimensionCropper extends ImagineCropper
     protected $width;
     protected $height;
 
+    /**
+     * DimensionCropper constructor.
+     * @param null $width
+     * @param null $height
+     */
     public function __construct($width = null, $height = null)
     {
         parent::__construct();
@@ -15,6 +20,9 @@ class DimensionCropper extends ImagineCropper
         $this->height = $height;
     }
 
+    /**
+     * Perform the crop.
+     */
     public function performCrop()
     {
         // Calculate the missing width/height for the asset - ensure aspect ratio is maintained

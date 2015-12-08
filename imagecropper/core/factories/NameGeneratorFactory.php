@@ -6,6 +6,12 @@ use Core\Generators\Sources\RackspaceNameGenerator;
 
 class NameGeneratorFactory extends Factory
 {
+    /**
+     * Create a NameGenerator class
+     * @param null $type
+     * @param null $args
+     * @return LocalNameGenerator|RackspaceNameGenerator|null
+     */
     public function create($type = null, $args = null)
     {
         if($this->type == $type && $this->obj){

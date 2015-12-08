@@ -7,6 +7,12 @@ use Core\Croppers\ImgixCropper;
 
 class CropperFactory extends Factory
 {
+    /**
+     * Create a cropper class
+     * @param null $type
+     * @param null $args
+     * @return CoordinateCropper|DimensionCropper|ImgixCropper|null
+     */
     public function create($type = null, $args = null)
     {
         if($this->type == $type && $this->obj){
