@@ -1,6 +1,7 @@
 # Image Cropper Plugin
 
-This plugin allows you to create autocrops of images of specified dimensions via a Cropper Image field type.
+The Image Cropper plugin allows you to create autocrops of images of specified dimensions via a Cropper Image field type.
+_This plugin is currently in Beta_
 
 ## Installation
 
@@ -70,5 +71,3 @@ Example Usage:
 * Add support for Amazon s3
 * Add support for Google Cloud Storage
 
-
-_This plugin is in Beta so please report any issues and suggestions!_
